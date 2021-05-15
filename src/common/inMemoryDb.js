@@ -17,4 +17,8 @@ const createUser = async (user) => {
   return user;
 };
 
-module.exports = { getAllUsers, getUser, createUser };
+const removeUser = async (id) => {
+  DB.filter((el) => el.id === id);
+};
+
+module.exports = { getAllUsers, getUser, createUser, removeUser };

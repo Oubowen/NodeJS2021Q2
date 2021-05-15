@@ -14,7 +14,9 @@ const get = async (id) => {
 
 const save = async (user) => DB.createUser(user);
 
-module.exports = { getAll, get, save };
+const remove = async (id) => DB.removeUser(id);
+
+module.exports = { getAll, get, save, remove };
 
 // const TABLE_NAME = 'Users';
 

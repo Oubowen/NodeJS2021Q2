@@ -15,7 +15,8 @@ router.route('/:id').get(async (req, res) => {
 
 router.route('/:id').delete(async (req, res) => {
   await usersService.remove(req.params.id);
-  res.sendStatus(200);
+  const users = await usersService.getAll();
+  res.json(users.map(User.toResponse));
 });
 
 router.route('/').post(async (req, res) => {
