@@ -21,4 +21,8 @@ app.use('/', (req, res, next) => {
 
 app.use('/users', userRouter);
 
+app.use('/boards', userRouter);
+
+app.use('/tasks', userRouter);
+
 module.exports = app;
