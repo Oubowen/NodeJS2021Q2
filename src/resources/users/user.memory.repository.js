@@ -14,9 +14,11 @@ const get = async (id) => {
 
 const save = async (user) => DB.createUser(user);
 
+const update = async (id, user) => DB.updateUser(id, user);
+
 const remove = async (id) => DB.removeUser(id);
 
-module.exports = { getAll, get, save, remove };
+module.exports = { getAll, get, save, update, remove };
 
 // const TABLE_NAME = 'Users';
 
@@ -37,10 +39,3 @@ module.exports = { getAll, get, save, remove };
 // };
 
 // const save = async (user) => DB.saveEntity(TABLE_NAME, user);
-
-// const update = async (id, user) => {
-//   const entity = await DB.updateEntity(TABLE_NAME, id, user);
-//   if (!entity) {
-//     throw new NOT_FOUND_ERROR(`Couldn't find a user with id: ${id}`);
-//   }
-// };

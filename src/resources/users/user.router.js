@@ -13,12 +13,6 @@ router.route('/:id').get(async (req, res) => {
   res.json(User.toResponse(user));
 });
 
-router.route('/:id').delete(async (req, res) => {
-  await usersService.remove(req.params.id);
-  const users = await usersService.getAll();
-  res.json(users.map(User.toResponse));
-});
-
 router.route('/').post(async (req, res) => {
   const user = await usersService.save(
     new User({
@@ -30,12 +24,19 @@ router.route('/').post(async (req, res) => {
   res.json(User.toResponse(user));
 });
 
-// router.route('/:id').put(async (req, res) => {
-//   const user = await usersService.update(
-//     req.params.id,
-//     User.fromRequest(req.body)
-//   );
-//   res.status(200).send(User.toResponse(user));
-// });
+router.route('/:id').put(async (req, res) => {
+  const user = await usersService.update(req.params.id, {
+    name: req.body.name,
+    login: req.body.login,
+    password: req.body.password,
+  });
+  res.json(User.toResponse(user));
+});
+
+router.route('/:id').delete(async (req, res) => {
+  await usersService.remove(req.params.id);
+  const users = await usersService.getAll();
+  res.json(users.map(User.toResponse));
+});
 
 module.exports = router;
