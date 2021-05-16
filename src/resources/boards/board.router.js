@@ -19,7 +19,7 @@ router.route('/').post(async (req, res) => {
       columns: [
         {
           title: req.body.title,
-          order: 0,
+          order: req.body.order,
         },
       ],
     })
@@ -33,7 +33,7 @@ router.route('/:id').put(async (req, res) => {
     columns: [
       {
         title: req.body.title,
-        order: 0,
+        order: req.body.order,
       },
     ],
   });
