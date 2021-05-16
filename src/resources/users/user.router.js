@@ -11,6 +11,7 @@ router.route('/').get(async (req, res) => {
 router.route('/:id').get(async (req, res) => {
   const user = await usersService.get(req.params.id);
   res.json(User.toResponse(user));
+  res.sendStatus(201);
 });
 
 router.route('/').post(async (req, res) => {
@@ -21,7 +22,7 @@ router.route('/').post(async (req, res) => {
       password: req.body.password,
     })
   );
-  res.json(User.toResponse(user));
+  res.status(user ? 201 : 400).json(User.toResponse(user));
 });
 
 router.route('/:id').put(async (req, res) => {
@@ -34,8 +35,7 @@ router.route('/:id').put(async (req, res) => {
 });
 
 router.route('/:id').delete(async (req, res) => {
-  await usersService.remove(req.params.id);
-  const users = await usersService.getAll();
+  const users = await usersService.remove(req.params.id);
   res.json(users.map(User.toResponse));
 });
 
