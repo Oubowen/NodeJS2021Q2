@@ -18,8 +18,8 @@ const get = async (id) => {
 
 const save = async (board) => BOARDS.createBoard(board);
 
-// const update = async (id, user) => DB.updateUser(id, user);
+const update = async (id, board) => BOARDS.updateBoard(id, board);
 
 const remove = async (id) => BOARDS.removeBoard(id);
 
-module.exports = { getAll, get, save, remove };
+module.exports = { getAll, get, save, update, remove };

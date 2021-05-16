@@ -55,6 +55,22 @@ const createBoard = async (board) => {
   return BOARDS.slice()[BOARDS.length - 1];
 };
 
+const updateBoard = async (id, board) => {
+  const { name, columns } = board;
+  let currentBoard;
+  let updatedBoard;
+
+  BOARDS.forEach((el) => {
+    if (el.id === id) {
+      currentBoard = el;
+      currentBoard.name = name;
+      currentBoard.columns = columns;
+      updatedBoard = currentBoard;
+    }
+  });
+  return updatedBoard;
+};
+
 const removeBoard = async (id) => {
   let index = null;
 
@@ -77,5 +93,6 @@ module.exports = {
   getAllBoards,
   getBoard,
   createBoard,
+  updateBoard,
   removeBoard,
 };
