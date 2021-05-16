@@ -16,10 +16,10 @@ const get = async (id) => {
   return board;
 };
 
-// const save = async (user) => DB.createUser(user);
+const save = async (board) => BOARDS.createBoard(board);
 
 // const update = async (id, user) => DB.updateUser(id, user);
 
-// const remove = async (id) => DB.removeUser(id);
+const remove = async (id) => BOARDS.removeBoard(id);
 
-module.exports = { getAll, get };
+module.exports = { getAll, get, save, remove };

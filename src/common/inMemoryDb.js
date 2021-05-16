@@ -48,10 +48,24 @@ const removeUser = async (id) => {
 
 const getAllBoards = async () => BOARDS.slice();
 
-const getBoard = async (id) => {
-  const board = BOARDS.filter((el) => el.id === id)[0];
+const getBoard = async (id) => BOARDS.filter((el) => el.id === id)[0];
 
-  return board;
+const createBoard = async (board) => {
+  BOARDS.push(board);
+  return BOARDS.slice()[BOARDS.length - 1];
+};
+
+const removeBoard = async (id) => {
+  let index = null;
+
+  BOARDS.forEach((el) => {
+    if (el.id === id) {
+      index = BOARDS.indexOf(el);
+    }
+  });
+
+  BOARDS.splice(index, 1);
+  return BOARDS.slice();
 };
 
 module.exports = {
@@ -62,4 +76,6 @@ module.exports = {
   removeUser,
   getAllBoards,
   getBoard,
+  createBoard,
+  removeBoard,
 };
