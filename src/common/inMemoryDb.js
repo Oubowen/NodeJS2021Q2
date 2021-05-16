@@ -56,15 +56,18 @@ const createBoard = async (board) => {
 };
 
 const updateBoard = async (id, board) => {
-  const { name, columns } = board;
+  const {
+    title,
+    columns: [{ title: columnTitle }],
+  } = board;
   let currentBoard;
   let updatedBoard;
 
   BOARDS.forEach((el) => {
     if (el.id === id) {
       currentBoard = el;
-      currentBoard.name = name;
-      currentBoard.columns = columns;
+      currentBoard.title = title;
+      currentBoard.columns.title = columnTitle;
       updatedBoard = currentBoard;
     }
   });

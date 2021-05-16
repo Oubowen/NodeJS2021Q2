@@ -13,7 +13,7 @@ router.route('/:id').get(async (req, res) => {
 });
 
 router.route('/').post(async (req, res) => {
-  const board = await boardsService.save(
+  const boards = await boardsService.save(
     new Board({
       title: req.body.title,
       columns: [
@@ -24,12 +24,12 @@ router.route('/').post(async (req, res) => {
       ],
     })
   );
-  res.status(201).json(board);
+  res.status(201).json(boards);
 });
 
 router.route('/:id').put(async (req, res) => {
   const board = await boardsService.update(req.params.id, {
-    title: req.body.name,
+    title: req.body.title,
     columns: [
       {
         title: req.body.title,
